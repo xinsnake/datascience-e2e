@@ -7,9 +7,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - "..:/workspace"
-      - "~/.gitignore:/root/.gitignore:ro"
-      - "~/.gitconfig:/root/.gitconfig:ro"
-      - "~/.ssh:/root/.ssh:ro"
+      - "~/.gitignore:/root/.gitignore"
+      - "~/.gitconfig:/root/.gitconfig"
+      - "~/.ssh:/root/.ssh"
     env_file: ../.env
     command: sleep infinity
 
