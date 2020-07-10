@@ -9,3 +9,17 @@ RUN apt-get update \
     && pipx install cookiecutter \
     # install databricks-cli
     && pipx install databricks-cli
+
+# create the virtual envs
+RUN mkdir -p /.envs \
+    #   localspark
+    && python3 -m venv /.envs/localspark \
+    && /.envs/localspark/bin/pip install --upgrade pip \
+    && /.envs/localspark/bin/pip install pyspark \
+    #   databricks
+    && python3 -m venv /.envs/databricks \
+    && /.envs/databricks/bin/pip install --upgrade pip \
+    && /.envs/databricks/bin/pip install databricks-connect \
+    # Need this to use environment variables for databricks-connect setting
+    # https://forums.databricks.com/questions/21536/databricks-connect-configuration-not-possible-with.html
+    && echo '{}' > ~/.databricks-connect

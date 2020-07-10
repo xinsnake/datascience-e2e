@@ -6,7 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ..:/workspace
+      - "..:/workspace"
+      - "~/.gitignore:/root/.gitignore:ro"
+      - "~/.gitconfig:/root/.gitconfig:ro"
+      - "~/.ssh:/root/.ssh:ro"
+    env_file: ../.env
     command: sleep infinity
 
   jupyter:
