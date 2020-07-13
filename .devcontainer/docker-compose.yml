@@ -3,20 +3,23 @@ services:
   workspace:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: workspace.Dockerfile
     volumes:
       - "..:/workspace"
+      - "~/.ssh:/root/.ssh"
       - "~/.gitignore:/root/.gitignore"
       - "~/.gitconfig:/root/.gitconfig"
-      - "~/.ssh:/root/.ssh"
     env_file: ../.env
     command: sleep infinity
   jupyter:
-    image: jupyter/pyspark-notebook:latest
-    environment:
-      - JUPYTER_ENABLE_LAB=yes
+    build:
+      context: .
+      dockerfile: jupyter.Dockerfile
     ports:
-      - '127.0.0.1:8888:8888'
+      - "127.0.0.1:8888:8888"
+    env_file: ../.env
     volumes:
-      - "../.jupyter:/home/jovyan/.jupyter"
-      - "..:/home/jovyan/work"
+      - "..:/workspace"
+      - "~/.ssh:/root/.ssh"
+      - "../.jupyter:/root/.jupyter"
+      - "../.databrickscfg:/root/.databrickscfg"

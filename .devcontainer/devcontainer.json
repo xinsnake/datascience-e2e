@@ -5,6 +5,7 @@
   "context": "..",
   "workspaceFolder": "/workspace",
   "settings": {
+    "editor.formatOnSave": true,
     "python.formatting.autopep8Path": "/root/.local/bin/autopep8",
     "python.formatting.blackPath": "/root/.local/bin/black",
     "python.formatting.yapfPath": "/root/.local/bin/yapf",
