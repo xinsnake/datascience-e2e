@@ -1,27 +1,27 @@
 {
-	"name": "Data Science E2E",
-	"dockerComposeFile": "docker-compose.yml",
+  "name": "Data Science E2E",
+  "dockerComposeFile": "docker-compose.yml",
   "service": "workspace",
   "context": "..",
-	"workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspace",
   "settings": {
-		"terminal.integrated.shell.linux": "/bin/bash",
-		"python.pythonPath": "/usr/local/bin/python",
-		"python.linting.enabled": true,
-		"python.linting.pylintEnabled": true,
-		"python.formatting.autopep8Path": "/root/.local/bin/autopep8",
-		"python.formatting.blackPath": "/root/.local/bin/black",
-		"python.formatting.yapfPath": "/root/.local/bin/yapf",
-		"python.linting.banditPath": "/root/.local/bin/bandit",
-		"python.linting.flake8Path": "/root/.local/bin/flake8",
-		"python.linting.mypyPath": "/root/.local/bin/mypy",
-		"python.linting.pycodestylePath": "/root/.local/bin/pycodestyle",
-		"python.linting.pydocstylePath": "/root/.local/bin/pydocstyle",
+    "python.formatting.autopep8Path": "/root/.local/bin/autopep8",
+    "python.formatting.blackPath": "/root/.local/bin/black",
+    "python.formatting.yapfPath": "/root/.local/bin/yapf",
+    "python.linting.banditPath": "/root/.local/bin/bandit",
+    "python.linting.enabled": true,
+    "python.linting.flake8Path": "/root/.local/bin/flake8",
+    "python.linting.mypyPath": "/root/.local/bin/mypy",
+    "python.linting.pycodestylePath": "/root/.local/bin/pycodestyle",
+    "python.linting.pydocstylePath": "/root/.local/bin/pydocstyle",
+    "python.linting.pylintEnabled": true,
     "python.linting.pylintPath": "/root/.local/bin/pylint",
+    "python.pythonPath": "/usr/local/bin/python",
     "python.venvPath": "/.envs",
+    "terminal.integrated.shell.linux": "/bin/bash",
   },
   "extensions": [
     "ms-python.python",
     "paiqo.databricks-vscode"
-	]
+  ]
 }

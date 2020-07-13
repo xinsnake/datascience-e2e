@@ -24,6 +24,7 @@ ARG DEFAULT_UTILS="\
     pydocstyle \
     pycodestyle \
     bandit \
+    nbstripout \
     cookiecutter \
     databricks-cli"
 

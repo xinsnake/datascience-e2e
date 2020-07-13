@@ -11,6 +11,12 @@ services:
       - "~/.ssh:/root/.ssh"
     env_file: ../.env
     command: sleep infinity
+  jupyter:
+    image: jupyter/pyspark-notebook:latest
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
     ports:
-      - '8888:8888'
-      - '8889:8889'
+      - '127.0.0.1:8888:8888'
+    volumes:
+      - "../.jupyter:/home/jovyan/.jupyter"
+      - "..:/home/jovyan/work"
