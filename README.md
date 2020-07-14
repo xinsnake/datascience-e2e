@@ -239,8 +239,8 @@ and see if all features are supported
 
 ## Acknologements
 
-- Thanks @fujikosu for getting Python code to run on local PySpark
-or Azure DataBricks.
+- Thanks [@fujikosu](https://github.com/fujikosu) for getting Python
+code to run on local PySpark or Azure DataBricks.
 - [databrickslabs/jupyterlab-integration]
 (https://github.com/databrickslabs/jupyterlab-integration) for the
 integration between Jupyter Labs and DataBricks.
