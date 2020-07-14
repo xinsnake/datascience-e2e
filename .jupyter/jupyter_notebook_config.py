@@ -150,5 +150,5 @@ c.ContentsManager.root_dir = '/workspace'
 #c.GatewayClient.url = None
 #c.GatewayClient.validate_cert = True
 #c.GatewayClient.ws_url = None
-c.KernelManager.autorestart = False
-c.MappingKernelManager.kernel_info_timeout = 20
+c.KernelManager.autorestart=False
+c.MappingKernelManager.kernel_info_timeout=20

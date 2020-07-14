@@ -75,6 +75,14 @@ After you select the interpreter, you can open a new terminal in
 VSCode and you will see the opened terminal automatically selected
 the correct virtual environment.
 
+### Use cookiecutter
+
+To create a new cookiecutter-data-science project, run `make new`
+on the root directory of the workspace.
+
+You can also just use `cookiecutter` by itself with any other
+template as you wish.
+
 ## Use Jupyter Notebook
 
 Set up and running of Jupyter Labs is not fully yet. There are few
@@ -224,6 +232,13 @@ Valid version of conda detected: 4.8.3
 
 </p>
 </details>
+
+### Install nbstripout
+
+You may also want to have npstripout filter enabled so you don't
+commit notebook data/output into the repository.
+
+Run `make init` in the root of the workspace to install it.
 
 ## How it works
 
