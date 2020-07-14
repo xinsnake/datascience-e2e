@@ -108,6 +108,7 @@ interface.
 <details>
 <summary>Example output of this step Click Here</summary>
 <p>
+
 ``` bash
 $ docker ps --filter "name=datascience-e2e_devcontainer_jupyter" --quiet
 
@@ -219,7 +220,8 @@ Valid version of conda detected: 4.8.3
 [I 02:18:35.938 LabApp] http://e78b3d01449a:8888/
 [I 02:18:35.938 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 [W 02:18:35.944 LabApp] No web browser found: could not locate runnable browser.
-\```
+```
+
 </p>
 </details>
 
