@@ -29,7 +29,7 @@ There are few things you need to configure:
 - `.env`
 - SSH key for DataBricks
 
-### `.databrickscfg`
+### Create `.databrickscfg`
 
 This file needs to be created from the `.databrickscfg.example` file
 and filled up with your DataBricks details.
@@ -39,7 +39,7 @@ and filled up with your DataBricks details.
 
 You can generate the token in the DataBricks Workspace.
 
-### `.env`
+### Create `.env`
 
 This file needs to be created from the `.env.example` file and filled
 up with your DataBricks details.
@@ -104,6 +104,121 @@ DataBricks. `$OID` is the organisation ID which you have put in the
 After this configuration, you should be able to visit
 [http://localhost:8888](http://localhost:8888) and see the Jupyter
 interface.
+
+Example output of this step:
+
+``` bash
+$ docker ps --filter "name=datascience-e2e_devcontainer_jupyter" --quiet
+
+e78b3d01449a
+
+$ docker exec -i -t e78b /bin/bash
+
+(base) root@e78b3d01449a:/# conda activate db-jlab
+
+(db-jlab) root@e78b3d01449a:/# ls ~/.ssh
+config  id_rsa  id_rsa.pub  known_hosts  known_hosts.old
+
+(db-jlab) root@e78b3d01449a:/# PROFILE_NAME=rsa
+
+(db-jlab) root@e78b3d01449a:/# OID=8709416564172131
+
+(db-jlab) root@e78b3d01449a:/# dj $PROFILE_NAME -k -o $OID
+
+Valid version of conda detected: 4.8.3
+
+* Getting host and token from .databrickscfg
+
+* Select remote cluster
+
+? Which cluster to connect to?  0: 'MyCluster' (id: 0713-025441-scoop239, state: TERMINATED, workers: 1)
+   => Starting cluster 0713-025441-scoop239
+   => Waiting for cluster 0713-025441-scoop239 being started (this can take up to 5 min)
+   ........................................
+   => OK
+
+   => Waiting for libraries on cluster 0713-025441-scoop239 being installed (this can take some time)
+
+   => OK
+
+   => Selected cluster: MyCluster (52.156.HIDDEN)
+
+* Configuring ssh config for remote cluster
+   => ~/.ssh/config will be changed
+   => A backup of the current ~/.ssh/config has been created
+   => at ~/.databrickslabs_jupyterlab/ssh_config_backup/config.2020-07-14_02-17-41
+   => Added ssh config entry or modified IP address:
+
+      Host 0713-025441-scoop239
+          HostName 52.156.HIDDEN
+          User ubuntu
+          Port 2200
+          IdentityFile ~/.ssh/id_rsa
+          ServerAliveInterval 30
+          ConnectTimeout 5
+          ServerAliveCountMax 5760
+
+   => Known hosts fingerprint added for 52.156.HIDDEN
+
+   => Testing whether cluster can be reached
+   => OK
+
+* Installing driver libraries
+   => Installing  ipywidgets==7.5.1 ipykernel==5.2.1 databrickslabs-jupyterlab==2.0.0
+   => OK
+False
+
+* Creating remote kernel spec
+   => Creating kernel specification for profile 'rsa'
+   => Kernel specification 'SSH 0713-025441-scoop239 SSH 0713-025441-scoop239 rsa:MyCluster (db-jlab/Spark)' created or updated
+   => OK
+
+* Setting global config of jupyter lab (autorestart, timeout)
+   => OK
+
+(db-jlab) root@e78b3d01449a:/# dj $PROFILE_NAME -l
+Valid version of conda detected: 4.8.3
+
+* Getting host and token from .databrickscfg
+
+* Select remote cluster
+
+? Which cluster to connect to?  0: 'MyCluster' (id: 0713-025441-scoop239, state: RUNNING, workers: 1)
+   => Selected cluster: MyCluster (52.156.HIDDEN)
+
+* Configuring ssh config for remote cluster
+   => ~/.ssh/config will be changed
+   => A backup of the current ~/.ssh/config has been created
+   => at ~/.databrickslabs_jupyterlab/ssh_config_backup/config.2020-07-14_02-18-32
+   => Added ssh config entry or modified IP address:
+
+      Host 0713-025441-scoop239
+          HostName 52.156.HIDDEN
+          User ubuntu
+          Port 2200
+          IdentityFile ~/.ssh/id_rsa
+          ServerAliveInterval 30
+          ConnectTimeout 5
+          ServerAliveCountMax 5760
+
+   => Known hosts fingerprint added for 52.156.HIDDEN
+
+   => Testing whether cluster can be reached
+   => OK
+
+* Installing driver libraries
+   => Installing  ipywidgets==7.5.1 ipykernel==5.2.1 databrickslabs-jupyterlab==2.0.0
+   => OK
+[I 02:18:35.328 LabApp] Writing notebook server cookie secret to /root/.local/share/jupyter/runtime/notebook_cookie_secret
+[W 02:18:35.437 LabApp] All authentication is disabled.  Anyone who can connect to this server will be able to run code.
+[I 02:18:35.936 LabApp] JupyterLab extension loaded from /opt/conda/envs/db-jlab/lib/python3.7/site-packages/jupyterlab
+[I 02:18:35.936 LabApp] JupyterLab application directory is /opt/conda/envs/db-jlab/share/jupyter/lab
+[I 02:18:35.938 LabApp] Serving notebooks from local directory: /workspace
+[I 02:18:35.938 LabApp] The Jupyter Notebook is running at:
+[I 02:18:35.938 LabApp] http://e78b3d01449a:8888/
+[I 02:18:35.938 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 02:18:35.944 LabApp] No web browser found: could not locate runnable browser.
+```
 
 ## How it works
 
