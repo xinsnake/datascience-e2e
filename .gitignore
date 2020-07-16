@@ -1,8 +1,6 @@
 /configs/.databrickscfg
 /configs/.jupyter/*
 !/configs/.jupyter/jupyter_notebook_config.py
-/configs/.ssh/*
-!/configs/.ssh/.gitkeep
 
 # Created by https://www.toptal.com/developers/gitignore/api/jupyternotebooks,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=jupyternotebooks,python

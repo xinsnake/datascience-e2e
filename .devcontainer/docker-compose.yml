@@ -5,10 +5,10 @@ services:
       context: .
       dockerfile: workspace.Dockerfile
     volumes:
-      - "..:/workspace"
-      - "../configs/.ssh:/root/.ssh"
+      - "~/.ssh:/root/.ssh"
       - "~/.gitignore:/root/.gitignore"
       - "~/.gitconfig:/root/.gitconfig"
+      - "..:/workspace"
     env_file: ../configs/.env
     command: sleep infinity
   jupyter:
@@ -19,7 +19,7 @@ services:
       - "127.0.0.1:8888:8888"
     env_file: ../configs/.env
     volumes:
+      - "~/.ssh:/root/.ssh"
       - "..:/workspace"
-      - "../configs/.ssh:/root/.ssh"
       - "../configs/.jupyter:/root/.jupyter"
       - "../configs/.databrickscfg:/root/.databrickscfg"
