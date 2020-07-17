@@ -23,6 +23,7 @@
   },
   "extensions": [
     "ms-python.python",
-    "paiqo.databricks-vscode"
+    "paiqo.databricks-vscode",
+    "yzhang.markdown-all-in-one"
   ]
 }
