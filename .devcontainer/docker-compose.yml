@@ -3,23 +3,15 @@ services:
   workspace:
     build:
       context: .
-      dockerfile: workspace.Dockerfile
+      dockerfile: Dockerfile
     volumes:
-      - "~/.ssh:/root/.ssh"
-      - "~/.gitignore:/root/.gitignore"
-      - "~/.gitconfig:/root/.gitconfig"
       - "..:/workspace"
+      - "../configs/.databrickscfg:/root/.databrickscfg"
+      - "../configs/.jupyter:/root/.jupyter"
+      - "~/.gitconfig:/root/.gitconfig"
+      - "~/.gitignore:/root/.gitignore"
+      - "~/.ssh:/root/.ssh"
     env_file: ../configs/.env
-    command: sleep infinity
-  jupyter:
-    build:
-      context: .
-      dockerfile: jupyter.Dockerfile
     ports:
       - "127.0.0.1:8888:8888"
-    env_file: ../configs/.env
-    volumes:
-      - "~/.ssh:/root/.ssh"
-      - "..:/workspace"
-      - "../configs/.jupyter:/root/.jupyter"
-      - "../configs/.databrickscfg:/root/.databrickscfg"
+    command: sleep infinity

@@ -1,0 +1,1 @@
+databrickslabs-jupyterlab==2.0.0

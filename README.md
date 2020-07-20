@@ -34,8 +34,8 @@ There are few things you need to configure:
 This file needs to be created from the `/configs/.databrickscfg.example` file
 and filled up with your DataBricks details.
 
-`SSH_PROFILE_NAME` is the name of your SSH key where the file name follows
-`id_${SSH_PROFILE_NAME}`.
+`SSH_PROFILE` is the name of your SSH key where the file name follows
+`id_${SSH_PROFILE}`.
 
 You can generate the token in the DataBricks Workspace.
 
@@ -99,12 +99,12 @@ $ docker exec -i -t $JP_CONTAINER /bin/bash
 
 # The below commands are inside the container
 (base)    $ conda activate db-jlab                         # activate the environment
-(db-jlab) $ dj $SSH_PROFILE_NAME -k -o $DATABRICKS_ORG_ID  # set up the kernel
-(db-jlab) $ dj $SSH_PROFILE_NAME -l                        # launch jupyterlabs
+(db-jlab) $ dj $SSH_PROFILE -k -o $DATABRICKS_ORG_ID  # set up the kernel
+(db-jlab) $ dj $SSH_PROFILE -l                        # launch jupyterlabs
 ```
 
-Here `$SSH_PROFILE_NAME` should match the file name inside the `~/.ssh`
-directory, i.e. you should have a file `id_${SSH_PROFILE_NAME}` and the
+Here `$SSH_PROFILE` should match the file name inside the `~/.ssh`
+directory, i.e. you should have a file `id_${SSH_PROFILE}` and the
 public key which you have copied into the cluster you created in
 DataBricks. `$DATABRICKS_ORG_ID` is the organisation ID which you have
 put in the `/configs/.env` file.
@@ -129,11 +129,11 @@ $ docker exec -i -t e78b /bin/bash
 (db-jlab) root@e78b3d01449a:/# ls ~/.ssh
 config  id_rsa  id_rsa.pub  known_hosts  known_hosts.old
 
-(db-jlab) root@e78b3d01449a:/# SSH_PROFILE_NAME=rsa
+(db-jlab) root@e78b3d01449a:/# SSH_PROFILE=rsa
 
 (db-jlab) root@e78b3d01449a:/# OID=8709416564172131
 
-(db-jlab) root@e78b3d01449a:/# dj $SSH_PROFILE_NAME -k -o $OID
+(db-jlab) root@e78b3d01449a:/# dj $SSH_PROFILE -k -o $OID
 
 Valid version of conda detected: 4.8.3
 
@@ -186,7 +186,7 @@ False
 * Setting global config of jupyter lab (autorestart, timeout)
    => OK
 
-(db-jlab) root@e78b3d01449a:/# dj $SSH_PROFILE_NAME -l
+(db-jlab) root@e78b3d01449a:/# dj $SSH_PROFILE -l
 Valid version of conda detected: 4.8.3
 
 * Getting host and token from .databrickscfg

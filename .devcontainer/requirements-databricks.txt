@@ -1,0 +1,2 @@
+databricks-connect==6.6.0
+ipykernel==5.3.3
