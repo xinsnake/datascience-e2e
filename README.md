@@ -249,7 +249,9 @@ Run `make init` in the root of the workspace to install it.
 
 ## How it works
 
-TBA
+![howitworks.png](.devcontainer/docs/howitworks.png)
+
+Explaination TBA.
 
 ## Help Needed
 
