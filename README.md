@@ -2,8 +2,15 @@
 
 ## Features
 
-- Run Python code on local PySpark or Azure DataBricks
-- Run Jupyter Notebook on local PySpark or Azure DataBricks
+- Use VSCode to write Python with set up for
+  - PySpark
+  - DataBricks via DataBricks-Connect
+
+- Use JupyterLab to experiment with set up for
+  - PySpark
+  - DataBricks via DataBricks-Connect
+  - DataBricks via DataBricks-JupyterLabsIntegration
+
 - Cookiecutter template using cookiecutter-data-science
 - nbstripout to filter notebook output when committing
 
@@ -16,7 +23,8 @@
 - Docker
 - Visual Studio Code
   - Remote Development plugins
-- Azure DataBricks
+- DataBricks Workspace
+  - A Personal Access Token
   - A VNet enabled DataBricks workspace
   - A DataBricks cluster with SSH access enabled
   - Allow NSG port 2200 to be accessible from your workstation
@@ -25,9 +33,17 @@
 
 There are few things you need to configure:
 
-- `/configs/.databrickscfg`
-- `/configs/.env`
-- SSH key for DataBricks
+- `/configs/.env`.
+- `/configs/.databrickscfg`.
+- SSH key for DataBricks, you should have your SSH key in `~/.ssh` folder on your host.
+
+### Create `.env`
+
+This file needs to be created from the `/configs/.env.example` file and filled
+up with your DataBricks details.
+
+You can find more information about how to configure the CLI [here]
+(https://docs.microsoft.com/en-us/azure/databricks/dev-tools/cli/#set-up-the-cli)
 
 ### Create `.databrickscfg`
 
@@ -38,14 +54,6 @@ and filled up with your DataBricks details.
 `id_${SSH_PROFILE}`.
 
 You can generate the token in the DataBricks Workspace.
-
-### Create `.env`
-
-This file needs to be created from the `/configs/.env.example` file and filled
-up with your DataBricks details.
-
-You can find more information about how to configure the CLI [here]
-(https://docs.microsoft.com/en-us/azure/databricks/dev-tools/cli/#set-up-the-cli)
 
 ### Configure SSH access for your DataBricks cluster
 
@@ -83,22 +91,17 @@ on the root directory of the workspace.
 You can also just use `cookiecutter` by itself with any other
 template as you wish.
 
-## Use Jupyter Notebook
+## Use JupyterLab
 
-Set up and running of Jupyter Labs is not fully yet. There are few
-commands you need to run interactively in order to set up the
-Jupyter kernel and connect to the remote DataBricks cluster.
+There are few commands you need to run interactively in order to
+start JupyterLab and connect to the remote DataBricks cluster.
 
 After you finish the configurations needed, execute the following
 commands in the jupyter container:
 
 ``` bash
-# First find out the container
-$ JP_CONTAINER=$(docker ps --filter "name=datascience-e2e_devcontainer_jupyter" --quiet)
-$ docker exec -i -t $JP_CONTAINER /bin/bash
-
 # The below commands are inside the container
-(base)    $ conda activate db-jlab                         # activate the environment
+(base)    $ conda activate db-jlab                    # activate the environment
 (db-jlab) $ dj $SSH_PROFILE -k -o $DATABRICKS_ORG_ID  # set up the kernel
 (db-jlab) $ dj $SSH_PROFILE -l                        # launch jupyterlabs
 ```
@@ -254,8 +257,9 @@ and see if all features are supported
 
 ## Acknologements
 
-- Thanks [@fujikosu](https://github.com/fujikosu) for getting Python
-code to run on local PySpark or Azure DataBricks.
+- Thanks [@fujikosu](https://github.com/fujikosu) to start the foundation
+investigation, and multiple contributions on Jupyter Extensions, Python
+utilities and overall setup.
 - [databrickslabs/jupyterlab-integration]
 (https://github.com/databrickslabs/jupyterlab-integration) for the
 integration between Jupyter Labs and DataBricks.
