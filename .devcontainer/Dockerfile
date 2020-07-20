@@ -24,35 +24,44 @@ COPY ./requirements-db-jlab.txt /
 
 # update conda in base
 RUN conda update -n base -c defaults conda -y
-RUN /bin/bash -c "source /root/.bashrc \
+RUN /bin/bash -c 'source /root/.bashrc \
     && conda activate base \
-    && pip install -r /requirements-base.txt"
+    && pip install -r /requirements-base.txt'
 
 # create environment localspark
 RUN conda create -n localspark python=3.7.3 -y
-RUN /bin/bash -c "source /root/.bashrc \
+RUN /bin/bash -c 'source /root/.bashrc \
     && conda activate localspark \
-    && pip install -r /requirements-localspark.txt"
+    && pip install -r /requirements-localspark.txt'
 
 # create environment databricks
 RUN conda create -n databricks python=3.7.3 -y
-RUN /bin/bash -c "source /root/.bashrc \
+RUN /bin/bash -c 'source /root/.bashrc \
     && conda activate databricks \
-    && pip install -r /requirements-databricks.txt"
+    && pip install -r /requirements-databricks.txt'
 
 # create environment db-jlab
 RUN conda create -n db-jlab python=3.7 -y
-RUN /bin/bash -c "source /root/.bashrc \
+RUN /bin/bash -c 'source /root/.bashrc \
     && conda activate db-jlab \
     && pip install -r /requirements-db-jlab.txt \
-    && dj -b"
+    && dj -b'
 
 # create conda environments in jupyter
-RUN /bin/bash -c "source /root/.bashrc \
+RUN /bin/bash -c 'source /root/.bashrc \
     && conda activate localspark \
     && python -m ipykernel install --user --name=LocalPyspark \
     && conda activate databricks \
-    && python -m ipykernel install --user --name=DataBricksConnect"
+    && python -m ipykernel install --user --name=DataBricksConnect'
+
+# Install jupyterlab extensions
+COPY ./labextensions.txt /
+RUN cat labextensions.txt
+RUN /bin/bash -c 'source /root/.bashrc \
+    && conda activate db-jlab \
+    && while read line; do jupyter labextension install --no-build $line; done < labextensions.txt \
+    && jupyter lab build'
+RUN rm labextensions.txt
 
 # update jupyter logos
 COPY ./logos/databricks-logo-32x32.png /root/.local/share/jupyter/kernels/databricksconnect/logo-32x32.png

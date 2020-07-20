@@ -1,1 +1,3 @@
 databrickslabs-jupyterlab==2.0.0
+# This needs to be installed for jupyterlab_code_formatter extensions
+jupyterlab_code_formatter
