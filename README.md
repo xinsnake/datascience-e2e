@@ -254,9 +254,8 @@ Explaination TBA.
 ## Help Needed
 
 - Test on macOS
-- -Run different interaction/visualisation on Jupyter Notebooks
-and see if all features are supported-
-- -If it is possible to have only 1 container-
+- ~~Run different interaction/visualisation on Jupyter Notebooks and see if all features are supported~~
+- ~~If it is possible to have only 1 container~~
 - Test if this setup also works on AWS
 
 ## Acknologements
