@@ -1,3 +1,9 @@
 databrickslabs-jupyterlab==2.0.0
-# This needs to be installed for jupyterlab_code_formatter extensions
+# This needs to be installed for
+# extension @ryantam626/jupyterlab_code_formatter
 jupyterlab_code_formatter
+black
+isort
+# This needs to be installed for
+# extension jupyterlab-flake8
+flake8

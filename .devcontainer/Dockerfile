@@ -40,13 +40,6 @@ RUN /bin/bash -c 'source /root/.bashrc \
     && conda activate databricks \
     && pip install -r /requirements-databricks.txt'
 
-# create environment db-jlab
-RUN conda create -n db-jlab python=3.7 -y
-RUN /bin/bash -c 'source /root/.bashrc \
-    && conda activate db-jlab \
-    && pip install -r /requirements-db-jlab.txt \
-    && dj -b'
-
 # create conda environments in jupyter
 RUN /bin/bash -c 'source /root/.bashrc \
     && conda activate localspark \
@@ -54,14 +47,16 @@ RUN /bin/bash -c 'source /root/.bashrc \
     && conda activate databricks \
     && python -m ipykernel install --user --name=DataBricksConnect'
 
-# Install jupyterlab extensions
+# create environment db-jlab and install extensions
 COPY ./labextensions.txt /
-RUN cat labextensions.txt
+RUN conda create -n db-jlab python=3.7 -y
 RUN /bin/bash -c 'source /root/.bashrc \
     && conda activate db-jlab \
+    && pip install -r /requirements-db-jlab.txt \
+    && dj -b \
     && while read line; do jupyter labextension install --no-build $line; done < labextensions.txt \
-    && jupyter lab build'
-RUN rm labextensions.txt
+    && jupyter lab build \
+    && jupyter serverextension enable --py jupyterlab_code_formatter'
 
 # update jupyter logos
 COPY ./logos/databricks-logo-32x32.png /root/.local/share/jupyter/kernels/databricksconnect/logo-32x32.png

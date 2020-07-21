@@ -1,2 +1,3 @@
 pyspark==2.4.5
-ipykernel==5.3.3
+# This needs to be installed for creating a custom kernel
+ipykernel
