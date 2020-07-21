@@ -23,5 +23,6 @@
     "ms-python.python",
     "paiqo.databricks-vscode",
     "yzhang.markdown-all-in-one"
-  ]
+  ],
+  "postAttachCommand": "mkdir -p /root/.ssh && touch /root/.ssh/config",
 }
