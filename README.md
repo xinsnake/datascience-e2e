@@ -5,15 +5,13 @@
 - Use VSCode to write Python with set up for
   - PySpark
   - DataBricks via DataBricks-Connect
-
-![vscode](.devcontainer/docs/vscode.png)
+    ![vscode](.devcontainer/docs/vscode.png)
 
 - Use JupyterLab to experiment with set up for
   - PySpark
   - DataBricks via DataBricks-Connect
   - DataBricks via DataBricks-JupyterLabsIntegration
-
-![jupyterlab](.devcontainer/docs/jupyterlab.png)
+    ![jupyterlab](.devcontainer/docs/jupyterlab.png)
 
 - Cookiecutter template using cookiecutter-data-science
 - nbstripout to filter notebook output when committing
@@ -256,9 +254,9 @@ Explaination TBA.
 ## Help Needed
 
 - Test on macOS
-- Run different interaction/visualisation on Jupyter Notebooks
-and see if all features are supported
-- If it is possible to have only 1 container
+- -Run different interaction/visualisation on Jupyter Notebooks
+and see if all features are supported-
+- -If it is possible to have only 1 container-
 - Test if this setup also works on AWS
 
 ## Acknologements
