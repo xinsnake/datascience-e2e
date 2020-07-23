@@ -5,19 +5,23 @@
   "context": "..",
   "workspaceFolder": "/workspace",
   "settings": {
-    "editor.formatOnSave": true,
-    "python.formatting.autopep8Path": "/opt/conda/bin/autopep8",
-    "python.formatting.blackPath": "/opt/conda/bin/black",
-    "python.formatting.yapfPath": "/opt/conda/bin/yapf",
-    "python.linting.banditPath": "/opt/conda/bin/bandit",
+    "python.formatting.blackArgs": [ "--line-length=99" ],
+    "python.formatting.provider": "black",
+    "python.linting.banditEnabled": true,
     "python.linting.enabled": true,
-    "python.linting.flake8Path": "/opt/conda/bin/flake8",
-    "python.linting.mypyPath": "/opt/conda/bin/mypy",
-    "python.linting.pycodestylePath": "/opt/conda/bin/pycodestyle",
-    "python.linting.pydocstylePath": "/opt/conda/bin/pydocstyle",
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pydocstyleEnabled": true,
     "python.linting.pylintEnabled": true,
-    "python.linting.pylintPath": "/opt/conda/bin/pylint",
+    "python.sortImports.args": [ "-rc", "-sp configs/isort.cfg" ],
+    "terminal.integrated.inheritEnv": false,
     "terminal.integrated.shell.linux": "/bin/bash",
+    "[python]": {
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": { "source.organizeImports": true },
+      "files.trimTrailingWhitespace": true
+    }
   },
   "extensions": [
     "ms-python.python",

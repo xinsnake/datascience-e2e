@@ -1,0 +1,14 @@
+# commandline utlities
+cookiecutter
+databricks-cli
+nbstripout
+
+# tooling
+bandit
+black
+flake8
+isort
+mypy
+pycodestyle
+pydocstyle
+pylint
