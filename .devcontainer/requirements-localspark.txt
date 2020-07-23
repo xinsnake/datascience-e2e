@@ -1,2 +1,5 @@
+# for creating a custom kernel
+ipykernel
+
+# for pyspark
 pyspark==2.4.5
-ipykernel==5.3.3

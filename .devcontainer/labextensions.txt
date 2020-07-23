@@ -1,6 +1,6 @@
 @jupyter-widgets/jupyterlab-manager
+@jupyterlab/toc
+@ryantam626/jupyterlab_code_formatter
 databrickslabs-jupyterlab-statusbar
 interrupt-ipykernel-extension
 jupyterlab-flake8
-@jupyterlab/toc
-@ryantam626/jupyterlab_code_formatter

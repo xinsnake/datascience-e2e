@@ -1,2 +1,5 @@
+# for creating a custom kernel
+ipykernel
+
+# for databricks connection
 databricks-connect==6.6.0
-ipykernel==5.3.3
