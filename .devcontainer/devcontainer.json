@@ -5,7 +5,7 @@
   "context": "..",
   "workspaceFolder": "/workspace",
   "settings": {
-    "python.formatting.blackArgs": [ "--line-length=99" ],
+    "python.formatting.blackArgs": [ "--line-length=79" ],
     "python.formatting.provider": "black",
     "python.linting.banditEnabled": true,
     "python.linting.enabled": true,
@@ -14,12 +14,14 @@
     "python.linting.pycodestyleEnabled": true,
     "python.linting.pydocstyleEnabled": true,
     "python.linting.pylintEnabled": true,
-    "python.sortImports.args": [ "-rc", "-sp configs/isort.cfg" ],
+    "python.pythonPath": "/opt/conda/envs/localspark/bin/python",
+    "python.sortImports.args": [ "-m 3", "-tc", "-sp ${workspaceFolder}/configs/isort.cfg" ],
+    "python.sortImports.path": "isort",
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.shell.linux": "/bin/bash",
     "[python]": {
       "editor.formatOnSave": true,
-      "editor.codeActionsOnSave": { "source.organizeImports": true },
+      "editor.codeActionsOnSave": { "source.organizeImports.python": true },
       "files.trimTrailingWhitespace": true
     }
   },
