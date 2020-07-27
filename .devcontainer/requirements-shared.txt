@@ -9,6 +9,4 @@ black
 flake8
 isort
 mypy
-pycodestyle
 pydocstyle
-pylint
