@@ -17,18 +17,7 @@ RUN echo 'deb http://deb.debian.org/debian/ sid main' >> /etc/apt/sources.list \
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 # copy requirements
-COPY ./requirements-base.txt /
-COPY ./requirements-databricks.txt /
-COPY ./requirements-db-jlab.txt /
-COPY ./requirements-localspark.txt /
-COPY ./requirements-shared.txt /
-
-# update conda in base
-RUN conda update -n base -c defaults conda -y
-RUN /bin/bash -c 'source /root/.bashrc \
-    && conda activate base \
-    && pip install -r /requirements-shared.txt \
-    && pip install -r /requirements-base.txt'
+COPY ./requirements-*.txt /
 
 # create environment localspark
 RUN conda create -n localspark python=3.7.3 -y
