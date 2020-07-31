@@ -37,5 +37,5 @@
     "yzhang.markdown-all-in-one",
     "njpwerner.autodocstring"
   ],
-  "postAttachCommand": "mkdir -p /root/.ssh && touch /root/.ssh/config",
+  "postAttachCommand": "mkdir -p /home/$(id -un)/.ssh && touch /home/$(id -un)/.ssh/config",
 }

@@ -6,11 +6,11 @@ services:
       dockerfile: Dockerfile
     volumes:
       - "..:/workspace"
-      - "../configs/.databrickscfg:/root/.databrickscfg"
-      - "../configs/.jupyter:/root/.jupyter"
-      - "~/.gitconfig:/root/.gitconfig"
-      - "~/.gitignore:/root/.gitignore"
-      - "~/.ssh:/root/.ssh"
+      - "../configs/.databrickscfg:/home/alex/.databrickscfg"
+      - "../configs/.jupyter:/home/alex/.jupyter"
+      - "~/.gitconfig:/home/alex/.gitconfig"
+      - "~/.gitignore:/home/alex/.gitignore"
+      - "~/.ssh:/home/alex/.ssh"
     env_file: ../configs/.env
     ports:
       - "127.0.0.1:8888:8888"

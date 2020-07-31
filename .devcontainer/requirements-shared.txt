@@ -10,3 +10,4 @@ flake8
 isort
 mypy
 pydocstyle
+pylint
