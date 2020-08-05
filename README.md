@@ -70,6 +70,32 @@ cluster.
   - At the bottom of the page, click the SSH tab.
   - Paste the key you copied into the SSH Public Key field.
 
+### If you are using WSL2, it is recommended to change your `/etc/wsl.conf` file
+
+The default WSL2 configuration does not enable NTFS metadata. It results to the fact that
+your files mounted in WSL2 does not have the correct UNIX compatible permission.
+
+Create the file `/etc/wsl.conf` if it doesn't exist with the following content:
+
+```
+[automount]
+enabled = true
+options = "metadata,umask=22,fmask=11,case=dir"
+```
+
+And then restart the WSL2 system `wsl --terminate YOUR_DISTRIBUTION`, you will see the files
+are now with the correct permission:
+
+```
+$ ls -l ~/.ssh
+total 28
+-rw-r--r-- 1 jazhou jazhou   191 Aug  5 11:47 config
+-rw------- 1 jazhou jazhou  2610 Jul 10 10:55 id_rsa
+-rw-r--r-- 1 jazhou jazhou   576 Jul 10 10:55 id_rsa.pub
+-rw------- 1 jazhou jazhou 10520 Aug  5 11:39 known_hosts
+-rw------- 1 jazhou jazhou  9635 Jul 31 22:05 known_hosts.old
+```
+
 ## Use Python
 
 Different Python environments are set up using Python's venv module.
